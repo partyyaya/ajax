@@ -13,8 +13,9 @@
     xmlhttp.onreadystatechange = callback;
     function test(){
         if(!xmlhttp)return;//沒有則直接跳出
-        xmlhttp.open("GET","ajax01.txt",true);//true代表非同步
-        xmlhttp.setRequestHeader("User_Agent","Ming");
+       // xmlhttp.open("GET","ajax01.txt",true);//true代表非同步
+        xmlhttp.open("GET","test.php",true);//true代表非同步
+        xmlhttp.setRequestHeader("USER_AGENT","ming");
         xmlhttp.send();
     }
 
@@ -43,10 +44,10 @@
 </script>
 
 <input type="button" onclick="test()" value="Click"/>
-<div id="test"></div>
-<div id="state"></div>
+
+<div id="state0"></div>
 <div id="state1"></div>
 <div id="state2"></div>
 <div id="state3"></div>
 <div id="state4"></div>
-<div id="ming"></div>
+<div id="test"></div>

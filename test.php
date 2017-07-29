@@ -5,6 +5,7 @@
 //        echo "{$key} = {$value} <br/>";
 //    }
 //    echo $_SERVER['HTTP_USER_AGENT'];
+
     if($agent == 'ming'){
          echo 'hello ming';
     }else if(strpos($agent,'Chrome')!= false){
