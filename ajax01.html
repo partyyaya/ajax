@@ -14,6 +14,7 @@
     function test(){
         if(!xmlhttp)return;//沒有則直接跳出
         xmlhttp.open("GET","ajax01.txt",true);//true代表非同步
+        xmlhttp.setRequestHeader("User_Agent","Ming");
         xmlhttp.send();
     }
 
@@ -31,6 +32,7 @@
         //        4: request finished and response is ready
         if(xmlhttp.readyState == 4 && xmlhttp.status ==200){//只有200的錯誤才回給我
             document.getElementById("test").innerHTML=xmlhttp.responseText;
+
         }
     }
 //    if(!xmlhttp){
@@ -47,3 +49,4 @@
 <div id="state2"></div>
 <div id="state3"></div>
 <div id="state4"></div>
+<div id="ming"></div>
