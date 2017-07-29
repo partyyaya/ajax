@@ -1,0 +1,27 @@
+<script>
+    var xmlhttp=false;
+    //var i=0;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+
+
+    function test() {
+        xmlhttp.open("GET","ajax05.php",true);//true代表非同步
+        xmlhttp.onreadystatechange = function () {
+            if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                var text = xmlhttp.responseText;
+                var table = document.getElementById('table');
+                table.innerHTML = text;
+            }
+        }
+        xmlhttp.send();
+    }
+</script>
+
+<button onclick="test()">Click</button>
+<table border="1" width="100%" id="table">
+
+</table>

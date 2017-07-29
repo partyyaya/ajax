@@ -1,12 +1,22 @@
-<?php header("Content-Type: text/xml ; charset=''UTF-8")?>
-<employees>
-    <employee>
-        <firstName>喔喔喔</firstName> <lastName>Doe</lastName>
-    </employee>
-    <employee>
-        <firstName>Anna</firstName> <lastName>Smith</lastName>
-    </employee>
-    <employee>
-        <firstName>Peter</firstName> <lastName>Jones</lastName>
-    </employee>
-</employees>
+<?php
+     header('Content-Type: text/xml; charset="UTF-8"');
+ ?>
+ <notes>
+     <note>
+         <title>Note1</title>
+         <authors>
+             <name>Brad</name>
+             <name>Tony</name>
+         </authors>
+         <price>100</price>
+     </note>
+     <note>
+         <title>Note2</title>
+         <authors>
+             <name>Kevin</name>
+             <name>Mary</name>
+             <name>Eric</name>
+         </authors>
+         <price>200</price>
+     </note>
+ </notes>

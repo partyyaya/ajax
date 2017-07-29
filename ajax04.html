@@ -31,6 +31,7 @@
             console.log(vv+"="+cc[vv]);
         }
     }
+
     function addRow2() {
         xmlhttp.open("GET","ajax04.php",true);//true代表非同步
         xmlhttp.onreadystatechange = function () {
@@ -57,23 +58,43 @@
     }
 
     function addRow3() {
-        xmlhttp.open("GET","ajax0403.php",true);//true代表非同步
+        xmlhttp.open("GET", "ajax0403.php",true);
         xmlhttp.onreadystatechange = function () {
-            if(xmlhttp.readyState==4 && xmlhttp.status==200){
-//                console.log(xmlhttp.responseText);
-//                console.log("-------");
-
-//              for(var v in xml){
-//                  console.log(v+"="+xml[v]);
-//              }
-                var xml=xmlhttp.responseXML;
-                var employee=xml.getElementsByTagName("employee");
-                //console.log(typeof(employee));
-                console.log(employee[0].innerHTML);
-                console.log(employee[1].innerHTML);
-                console.log(employee[2].innerHTML);
+            if (xmlhttp.readyState == 4 &&
+                xmlhttp.status == 200) {
+                var table = document.getElementById('table');
+                var xml = xmlhttp.responseXML;
+                var notes = xml.getElementsByTagName('note');
+                for (var i=0; i<notes.length; i++){
+                    var note = notes[i];
+                    var titleObj = note.getElementsByTagName('title');
+                    var title = titleObj[0].innerHTML
+                    var priceObj = note.getElementsByTagName('price');
+                    var price = priceObj[0].innerHTML
+                    var authorsObj = note.getElementsByTagName('authors');
+                    var authors= authorsObj[0];
+                    var names = authors.getElementsByTagName('name');
+                    for (var j=0; j<names.length; j++){
+                        var nameObj = names[j];
+                        console.log(nameObj.innerHTML);
+                        var tr = table.insertRow(-1);
+                        if (j==0){
+                            var td0 = tr.insertCell(0);
+                            td0.rowSpan = names.length;
+                            td0.innerHTML = title;
+                            var td1 = tr.insertCell(1);
+                            td1.innerHTML = nameObj.innerHTML;
+                            var td2 = tr.insertCell(2);
+                            td2.rowSpan = names.length;
+                            td2.innerHTML = price;
+                        }else{
+                            var td1 = tr.insertCell(0);
+                            td1.innerHTML = nameObj.innerHTML;
+                        }
+                    }
+                }
             }
-        }
+        };
         xmlhttp.send();
     }
 </script>
