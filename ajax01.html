@@ -1,1 +1,49 @@
 <!--C:\MAMP\htdocs-->
+<script>
+    var xmlhttp=false;
+    var i=0;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+
+    console.log(xmlhttp.readyState);//  0: request not initialized
+
+    xmlhttp.onreadystatechange = callback;
+    function test(){
+        if(!xmlhttp)return;//沒有則直接跳出
+        xmlhttp.open("GET","ajax01.txt",true);//true代表非同步
+        xmlhttp.send();
+    }
+
+    function callback() {
+//        i++;
+//        console.log("ok"+i);
+        console.log(xmlhttp.readyState);
+        var target = document.getElementById("state"+xmlhttp.readyState);
+        target.innerHTML=xmlhttp.readyState;
+        //readystate:
+        //        0: request not initialized
+        //        1: server connection established
+        //        2: request received
+        //        3: processing request
+        //        4: request finished and response is ready
+        if(xmlhttp.readyState == 4 && xmlhttp.status ==200){//只有200的錯誤才回給我
+            document.getElementById("test").innerHTML=xmlhttp.responseText;
+        }
+    }
+//    if(!xmlhttp){
+//        alert("ajax support");
+//    }else{
+//        alert("no ajax support");
+//    }
+</script>
+
+<input type="button" onclick="test()" value="Click"/>
+<div id="test"></div>
+<div id="state"></div>
+<div id="state1"></div>
+<div id="state2"></div>
+<div id="state3"></div>
+<div id="state4"></div>
