@@ -1,0 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+
+<script>
+    function test1(){
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "ajax12jsonp.php",
+            dataType: "jsonp",
+            jsonp: "mycallback",
+            jsonpCallback: "myfunc",
+            success: function(data){
+                console.log(data.name);
+                $("#here").html(data.name);
+            },
+            error: function(){
+                alert('ERROR');
+            }
+        });
+    }
+
+    function myfunc(){
+        console.log('got it');
+    }
+
+    //setInterval(test1, 1000);
+</script>
+
+<button onclick="test1()">Test1</button>
+<div id='here'></div>
